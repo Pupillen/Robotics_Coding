@@ -98,6 +98,11 @@ nsight-sys
     <node pkg="plan_manager" type="plan_manager" name="plan_manager" output="screen" launch-prefix="valgrind --tool=callgrind  "> 
         <rosparam file="$(find plan_manager)/config/config.yaml" command="load" />
     </node>
+# 内存泄露分析
+     <node pkg="plan_manager" type="plan_manager" name="plan_manage" output="screen" launch-prefix="valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-leak-kinds=all"> 
+        <param name="profiling" value="false" />
+        <rosparam file="$(find plan_manager)/config/config2d.yaml" command="load" />
+    </node>
 ```
 ## 分析CPU耗时,函数调用占比等
 ![profiling实例1](Figures/notes/优化前discrete_parallel优化部分.jpeg)
