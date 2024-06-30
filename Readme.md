@@ -41,5 +41,26 @@ target_include_directories(main PUBLIC ../../include)
 - 参见Doc/cmake项目管理.pdf
 - 参见Doc/cmakeadvanced.pdf
 - 类似墙裂推荐[并行编程与优化](https://github.com/parallel101/course)cmake相关系列
-
+- 编译期sanity-check
+```make
+set(CMAKE_BUILD_TYPE "Release")
+ADD_COMPILE_OPTIONS(-std=c++14 )
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
+#!!!!!!!!!!sanity check, compiler flags!!!!!!!!!!
+add_compile_options(
+  -Wall
+  -Wextra
+  -Weffc++
+  -Werror=uninitialized
+  -Werror=return-type
+  -Wconversion
+  -Werror=unused-result
+  -Werror=suggest-override
+  -Wzero-as-null-pointer-constant
+  -Wmissing-declarations
+  -Wold-style-cast
+  -Wnon-virtual-dtor
+  )
+  #!!!!!!!!!!sanity check, com```cpppiler flags!!!!!!!!!!
+```
 
